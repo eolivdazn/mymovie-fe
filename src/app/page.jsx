@@ -8,12 +8,11 @@ export default async function Home() {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    // Authorization: `Bearer ${API_KEY}`
   }
 };
 //     const genre = searchParams.genre || "fetchTrending";
 //
-    const res = await fetch(`http://localhost:3010/movies/`,{...options, next: { revalidate: 10 } })
+    const res = await fetch(`http://localhost:3010/movies/`,{...options, next: { revalidate: 320 } })
         .then(response => response.json())
         .catch(err => console.error(err));
 
