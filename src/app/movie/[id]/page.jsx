@@ -61,6 +61,10 @@ export default async function Page({params}) {
                         <span className="font-semibold mr-1">Production Countries:</span>
                         {movie.production_countries?.map((country) => country.name).join(", ")}
                     </p>
+                    <p className="mb-3">
+                        <span className="font-semibold mr-1">Cast:</span>
+                        <p className="line-clamp-2">{movie.cast?.map((el) => el.name).join(", ")}</p>
+                    </p>
                 </div>
             </div>
         </div>

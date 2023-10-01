@@ -4,6 +4,7 @@ import {HiThumbUp, } from 'react-icons/hi'
 import {AiFillStar} from 'react-icons/ai'
 import {BsCalendar2DateFill} from 'react-icons/bs'
 import {FaFlag} from 'react-icons/fa'
+import Actors from "@/components/Actors";
 
 export default function Card({result}) {
     return (
@@ -35,7 +36,17 @@ export default function Card({result}) {
                     <AiFillStar className="ml-1 mr-1 bg-amber-500"/>{Math.round(result.vote_average)}
                     </p>
                 </div>
+                <div className="p-2">
+                    <p className="line-clamp-4 text-md">
+                        {result.overview}
+                    </p>
+                </div>
             </Link>
+                <div className="p-2">
+                        { result.cast?.map((el) => ( <Actors key={el} actor={el}>
+                            </Actors>)
+                        ).slice(0, 4)}
+                </div>
         </div>
 
     )
