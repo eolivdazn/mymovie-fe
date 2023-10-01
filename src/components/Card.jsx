@@ -1,15 +1,26 @@
+
 import Link from "next/link";
 import Image from 'next/image'
-import {HiThumbUp, } from 'react-icons/hi'
 import {AiFillStar} from 'react-icons/ai'
 import {BsCalendar2DateFill} from 'react-icons/bs'
-import {FaFlag} from 'react-icons/fa'
 import Actors from "@/components/Actors";
+import {useState} from "react";
+
 
 export default function Card({result}) {
+    const [isActive, setIsActive] = useState(false);
+
+    const handleClick = () => {
+        setIsActive(current => !current);
+    };
+
     return (
-        <div className="cursor-pointer sm:p-3 sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 sm:m-2 transition-shadow duration-200 group">
-            <Link href={`/movie/${result.id_themoviedb}`}>
+        <div  onClick={handleClick}
+              style={{
+                  backgroundColor: isActive ? 'lightsalmon' : '',
+              }}
+            className="cursor-pointer sm:p-3 sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 sm:m-2 transition-shadow duration-200 group" >
+            {/*<Link href={`/movie/${result.id_themoviedb}`}>*/}
                 <Image
                     src={ result.poster_path != null ?
                         `https://image.tmdb.org/t/p/original/${
@@ -41,12 +52,15 @@ export default function Card({result}) {
                         {result.overview}
                     </p>
                 </div>
-            </Link>
+            {/*</Link>*/}
                 <div className="p-2">
                         { result.cast?.map((el) => ( <Actors key={el} actor={el}>
                             </Actors>)
-                        ).slice(0, 4)}
+                        ).slice(0, 3)}
                 </div>
+            <div className="p-2">   <p className="flex items-center">
+            </p>
+            </div>
         </div>
 
     )

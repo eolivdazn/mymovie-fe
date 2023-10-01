@@ -13,10 +13,10 @@ export default function Header() {
         <div className="flex items-center space-x-5">
         <Link href="/">
           <h2 className="text-2xl">
+            <span className="text-xl hidden sm:inline">Not</span>
             <span className="font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1">
-              IMDb
+              IMDB
             </span>
-            <span className="text-xl hidden sm:inline">Clone</span>
           </h2>
         </Link>
       </div>

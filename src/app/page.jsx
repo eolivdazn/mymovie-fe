@@ -12,7 +12,7 @@ export default async function Home() {
 };
 //     const genre = searchParams.genre || "fetchTrending";
 //
-    const res = await fetch(`http://localhost:3010/movies/`,{...options, next: { revalidate: 200000 } })
+    const res = await fetch(`http://localhost:3010/movies/`,{...options, next: { revalidate: 260 } })
         .then(response => response.json())
         .catch(err => console.error(err));
 
