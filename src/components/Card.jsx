@@ -10,16 +10,17 @@ import {useState} from "react";
 export default function Card({result}) {
     const [isActive, setIsActive] = useState(false);
 
-    const handleClick = () => {
-        setIsActive(current => !current);
-    };
+    // const handleClick = () => {
+    //     setIsActive(current => !current);
+    // };
 
     return (
-        <div  onClick={handleClick}
+        <div
+            // onClick={handleClick}
               style={{
                   backgroundColor: isActive ? 'lightsalmon' : '',
               }}
-            className="cursor-pointer sm:p-3 sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 sm:m-2 transition-shadow duration-200 group" >
+            className="cursor-pointer sm:p-3 sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:m-2 transition-shadow duration-200 group" >
             {/*<Link href={`/movie/${result.id_themoviedb}`}>*/}
                 <Image
                     src={ result.poster_path != null ?
@@ -41,7 +42,7 @@ export default function Card({result}) {
                     {/*<p className="line-clamp-2 text-md">*/}
                     {/*    {result.overview}*/}
                     {/*</p>*/}
-                    <h2 className="truncate text-lg font-bold">{result.title || result.name}</h2>
+                    <h1 className="font-bold p-2">{result.title || result.name}</h1>
                     <p className="flex items-center">
                     <BsCalendar2DateFill className="ml-1 mr-1 "/>{result.release_date || result.firts_air_date}
                     <AiFillStar className="ml-1 mr-1 bg-amber-500"/>{Math.round(result.vote_average)}

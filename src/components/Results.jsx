@@ -1,65 +1,44 @@
 "use client"
 import Card from "@/components/Card";
-import {useState} from "react";
+import { useState} from "react";
+import TinderCard from 'react-tinder-card'
+import {BsCalendar2DateFill} from "react-icons/bs";
+import {AiFillStar} from "react-icons/ai";
 
 
 export default function Results(results) {
 
-    const [items, setItems] = useState(
-        results.results.map((item) => {
-            return {...item, selected: false};
-        })
-    );
-    const [orderList, setOrderList] = useState([]);
+    const [lastDirection, setLastDirection] = useState()
 
-    const handleSelect = (value) => {
-        console.log(value)
-        const nextItems = items.map((item) => {
-            if (item._id === value) {
-                return {
-                    ...item,
-                    selected: !item.selected
-                };
-            }
-            return item;
-        });
-        const nextWork = nextItems
-            .filter((item) => item.selected)
-            .map((item) => item);
+    const swiped = (direction, nameToDelete) => {
+        console.log('removing: ' + nameToDelete)
+        setLastDirection(direction)
+    }
 
-        setOrderList(nextWork);
-        setItems(nextItems);
-    };
+    const outOfFrame = (name) => {
+        console.log(name + ' left the screen!')
+    }
+    const poster ='https://image.tmdb.org/t/p/original/'
+
+
     return (
-        <>
-            <div className="text-center">
-            <span className=" text-xl hidden sm:inline">Select the</span>
-            <span className="font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1">
-              ORDER
-            </span>
-            </div>
-            <div className="text-center">Selected: {JSON.stringify(orderList.length)}</div>
-            <div className=" text-center sm:p-3  rounded-lg sm:border sm:border-slate-400 sm:m-2 group">
-                {orderList.map((el, index)=>(
-                <div key={index} className=" justify-items-center sm:grid sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 2xl:grid-cols-3 max-w-6xl mx-auto py-1">
-                <p className="font-bold bg-amber-500 py-1 px-2 rounded-lg">{index+1}</p>
-                <p className=" py-1 px-2">{el.title}</p>
-                </div>
-                ))}
-            </div>
-            <div className="text-center">
-            {orderList.length === 3 ? <button className="text-center align-middle bg-amber-500 py-1 px-2 rounded-lg">Save</button> : null}
-            </div>
-            <div
-                className="max-w-sm justify-center justify-items align-items"
-                style={{ margin: "0 auto" }}>
-                {results.results.map((result) => (
-                    <div onClick={() => handleSelect(result._id)} key={result._id}>
-                        <Card key={result.id_themoviedb} result={result}/>
-                    </div>
-                ))}
-            </div>
+        <div>
+            <link href='https://fonts.googleapis.com/css?family=Damion&display=swap' rel='stylesheet' />
+            <link href='https://fonts.googleapis.com/css?family=Alatsi&display=swap' rel='stylesheet' />
 
-        </>
+            <div className='cardContainer' style={{ margin: "0 auto" }}>
+                {results.results.map((movie) =>
+                    <TinderCard
+                        className='swipe'
+                        key={movie._id} onSwipe={(dir) => swiped(dir, movie.title)}
+                        onCardLeftScreen={() => outOfFrame(movie.title)}>
+                        <div className="card">
+                        <Card key={movie._id} result={movie}/>
+                        </div>
+                    </TinderCard>
+                )}
+            </div>
+            {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
+        </div>
     )
 }

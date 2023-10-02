@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-spring/native": "^9.5.5",
+    "@react-spring/web": "^9.5.5",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-icons": "^4.11.0",
-    "webkit-line-clamp": "^1.2.2"
+    "react-tinder-card": "^1.6.3"
   },
   "devDependencies": {
     "autoprefixer": "latest",
