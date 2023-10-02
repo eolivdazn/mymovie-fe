@@ -51,7 +51,8 @@ export default function Results(results) {
             {orderList.length === 3 ? <button className="text-center align-middle bg-amber-500 py-1 px-2 rounded-lg">Save</button> : null}
             </div>
             <div
-                className="sm:grid sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-3 max-w-6xl mx-auto py-8">
+                className="max-w-sm justify-center justify-items align-items"
+                style={{ margin: "0 auto" }}>
                 {results.results.map((result) => (
                     <div onClick={() => handleSelect(result._id)} key={result._id}>
                         <Card key={result.id_themoviedb} result={result}/>
