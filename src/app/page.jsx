@@ -1,7 +1,4 @@
 import Results from "@/components/Results";
-import {data} from "@/app/data";
-// export const dynamic = "force-dynamic"; // this is the fix
-// const API_KEY = process.env.API_KEY
 export default async function Home() {
 
     const options = {
@@ -12,7 +9,7 @@ export default async function Home() {
 };
 //     const genre = searchParams.genre || "fetchTrending";
 //
-    const res = await fetch(`http:///34.36.224.44/movies/getInitialMovies/`,{...options, next: { revalidate: 30 } })
+    const res = await fetch(`https://34.36.23.203/movies/getInitialMovies/`,{...options, next: { revalidate: 30 } })
         .then(response => response.json())
         .catch(err => console.error(err));
 

@@ -18,7 +18,7 @@ export default function Results(results) {
                         desLike: [...new Set(userDisLike)],
                     }
                 ))
-            const recommendation = await fetch('http:///34.36.224.44/movies/recommendation', {
+            const recommendation = await fetch('https://34.36.23.203/movies/recommendation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
