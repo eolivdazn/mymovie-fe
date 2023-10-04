@@ -19,6 +19,5 @@ export default async function Home() {
 if(!res) {
     throw new Error("Failed to fetch API");
 }
-
     return <Results results={res} />;
 }
