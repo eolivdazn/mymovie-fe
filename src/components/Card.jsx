@@ -60,7 +60,7 @@ export default function Card({result}) {
                         ).slice(0, 3)}
                 </div>
               <div className="p-2"> <span className="font-bold">Director:</span>
-                { result.crew?.filter((el) =>  el.job === 'Director')
+                { result.crew?.filter((el, index) =>  el.job === 'Director')
                     .map((el) => ( <Actors key={el} actor={el}> </Actors>)
                 ).slice(0, 2)}
             </div>
