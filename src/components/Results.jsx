@@ -4,6 +4,7 @@ import {useState} from "react";
 import TinderCard from 'react-tinder-card'
 import {IoMdHeartDislike } from 'react-icons/io'
 import {FcLike} from 'react-icons/fc'
+import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai'
 
 
 export default function Results(results) {
@@ -69,12 +70,12 @@ export default function Results(results) {
 
                         ?
 
-                            <div className=" grid grid-cols-3  font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1">
+                            <div className=" grid grid-cols-5  font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1">
                                 <IoMdHeartDislike className=""></IoMdHeartDislike>
+                                <AiOutlineArrowLeft></AiOutlineArrowLeft>
                                <h1 className="text-center"> Swipe</h1>
-                                <div className="grid justify-items-end">
-                                    <FcLike ></FcLike>
-                                </div>
+                                <div className="grid justify-items-end"><AiOutlineArrowRight></AiOutlineArrowRight></div>
+                                <div className="grid justify-items-end"><FcLike></FcLike></div>
 
 
                             </div>
@@ -83,7 +84,9 @@ export default function Results(results) {
                 }
                 {
                     (data !== false)
-                        ? <h1 className="font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1 text-center"> Recommendation</h1>
+                        ? <div className="grid-rows-1 justify-center">
+                            <div className="grid font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1 text-center"> Recommendation</div>
+                        </div>
                         : null
                 }
 
