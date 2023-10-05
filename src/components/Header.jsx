@@ -5,7 +5,7 @@ import MenuItem from "@/components/MenuItem";
 
 export default function Header() {
   return (
-    <div className="flex justify-between mx-2 max-w-6xl sm:mx-auto items-center py-2">
+    <div className="flex justify-between mx-2 max-w-6xl sm:mx-auto items-center">
       <div className="flex">
         <MenuItem title="HOME" address="/" Icon={AiFillHome} />
         <MenuItem title="ABOUT" address="/about" Icon={BsFillInfoCircleFill} />

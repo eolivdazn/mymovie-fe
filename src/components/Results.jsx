@@ -10,6 +10,7 @@ import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai'
 export default function Results(results) {
     const [data, setData] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [noRecommendation, setNoRecommendation] = useState(true);
 
     async function clickHandler() {
         setIsLoading(true);
@@ -35,6 +36,8 @@ export default function Results(results) {
             })
             const result = await recommendation.json()
             setData(result);
+            setNoRecommendation(result);
+
             return result
         } catch (e) {
 
@@ -110,7 +113,7 @@ export default function Results(results) {
                 [...new Set(userLike)].length === results.results.length && data === false ?
                     <div><p className='text-center'>Get a movie recommendation</p>
                         <div onClick={clickHandler}
-                                className=" mr-4 ml-4 bg-amber-600 hover:bg-black text-center text-white font-bold py-2 px-4 rounded">
+                                className=" mr-4 ml-4 mb-3 bg-amber-600 hover:bg-black text-center text-white font-bold py-2 px-4 rounded">
                             Recommendation
                         </div>
                     </div>
@@ -125,6 +128,12 @@ export default function Results(results) {
                                 data?.map((movie, index) =>
                                     <Card style={{margin: "0 auto"}} key={index} result={movie}/>)
                             )}
+                    {
+                        (noRecommendation === false )
+                        ? <p className ='text-center'>No recommendation, please refresh the page.</p>
+                        : null
+
+                    }
                 </div>
 
             </div>
