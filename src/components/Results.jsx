@@ -2,6 +2,8 @@
 import Card from "@/components/Card";
 import {useState} from "react";
 import TinderCard from 'react-tinder-card'
+import {IoMdHeartDislike } from 'react-icons/io'
+import {FcLike} from 'react-icons/fc'
 
 
 export default function Results(results) {
@@ -64,7 +66,19 @@ export default function Results(results) {
                 {
                     ([...new Set(userDisLike)].length +
                         [...new Set(userLike)].length !== results.results.length )
-                        ? <h1 className="font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1 text-center"> Swipe</h1>
+
+                        ?
+
+                            <div className=" grid grid-cols-3  font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1">
+                                <IoMdHeartDislike className=""></IoMdHeartDislike>
+                               <h1 className="text-center"> Swipe</h1>
+                                <div className="grid justify-items-end">
+                                    <FcLike ></FcLike>
+                                </div>
+
+
+                            </div>
+
                         : null
                 }
                 {
