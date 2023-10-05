@@ -35,8 +35,6 @@ export default function Results(results) {
             })
             const result = await recommendation.json()
             setData(result);
-            console.log(JSON.stringify(result), 'data')
-            console.log(result)
             return result
         } catch (e) {
 
