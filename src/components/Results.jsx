@@ -70,11 +70,13 @@ export default function Results(results) {
 
                         ?
 
-                            <div className=" grid grid-cols-5  font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1">
+                            <div className=" grid grid-cols-7 align-middle  bg-amber-500 py-1 px-2 rounded-lg mr-1">
                                 <IoMdHeartDislike className=""></IoMdHeartDislike>
+                                <div className="justify-items-start">{[...new Set(userDisLike)].length}</div>
                                 <AiOutlineArrowLeft></AiOutlineArrowLeft>
-                               <h1 className="text-center"> Swipe</h1>
+                               <h1 className="text-center font-bold "> Swipe</h1>
                                 <div className="grid justify-items-end"><AiOutlineArrowRight></AiOutlineArrowRight></div>
+                                <div className="grid justify-items-end">{[...new Set(userLike)].length}</div>
                                 <div className="grid justify-items-end"><FcLike></FcLike></div>
 
 
