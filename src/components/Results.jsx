@@ -61,6 +61,11 @@ export default function Results(results) {
             <link href='https://fonts.googleapis.com/css?family=Alatsi&display=swap' rel='stylesheet'/>
 
             <div className='cardContainer' style={{margin: "auto"}}>
+                {
+                    (data === false)
+                        ? <h1 className="font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1 text-center"> Swipe</h1>
+                        : <h1 className="font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1 text-center"> Recommendation</h1>
+                }
 
                 {results.results.map((movie, index) =>
                     <TinderCard
