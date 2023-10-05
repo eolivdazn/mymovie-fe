@@ -9,7 +9,7 @@ export default async function Home() {
 };
 //     const genre = searchParams.genre || "fetchTrending";
 //
-    const res = await fetch(`https://34.36.23.203/movies/getInitialMovies/`,{...options, next: { revalidate: 30 } })
+    const res = await fetch(`https://movies-400919.ey.r.appspot.com/movies/getInitialMovies/`,{...options, next: { revalidate: 30 } })
         .then(response => response.json())
         .catch(err => console.error(err));
 
