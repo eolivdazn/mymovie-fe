@@ -62,9 +62,15 @@ export default function Results(results) {
 
             <div className='cardContainer' style={{margin: "auto"}}>
                 {
-                    (data === false)
+                    ([...new Set(userDisLike)].length +
+                        [...new Set(userLike)].length !== results.results.length )
                         ? <h1 className="font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1 text-center"> Swipe</h1>
-                        : <h1 className="font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1 text-center"> Recommendation</h1>
+                        : null
+                }
+                {
+                    (data !== false)
+                        ? <h1 className="font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1 text-center"> Recommendation</h1>
+                        : null
                 }
 
                 {results.results.map((movie, index) =>
@@ -87,8 +93,8 @@ export default function Results(results) {
                 [...new Set(userLike)].length === results.results.length && data === false ?
                     <div><p className='text-center'>Get a movie recommendation</p>
                         <button onClick={clickHandler}
-                                className="align-text-bottom bg-amber-600 hover:bg-black text-white font-bold py-2 px-4 rounded">
-                            Button
+                                className="align-text-bottom bg-amber-600 hover:bg-black text-center text-white font-bold py-2 px-4 rounded">
+                            Recommendation
                         </button>
                     </div>
                     : null}
