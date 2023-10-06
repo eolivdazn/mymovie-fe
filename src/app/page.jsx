@@ -1,4 +1,5 @@
 import Results from "@/components/Results";
+import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 export default async function Home() {
 
     const options = {
@@ -7,9 +8,9 @@ export default async function Home() {
     accept: 'application/json',
   }
 };
-//     const genre = searchParams.genre || "fetchTrending";
-//
-    const res = await fetch(`https://movies-400919.ey.r.appspot.com/movies/getInitialMovies/`,{...options, next: { revalidate: 30 } })
+    const url = process.env.URL_MOVIES
+
+    const res = await fetch(`${url}getInitialMovies/`,{...options, next: { revalidate: 30 } })
         .then(response => response.json())
         .catch(err => console.error(err));
 

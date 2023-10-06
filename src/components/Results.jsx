@@ -5,9 +5,11 @@ import TinderCard from 'react-tinder-card'
 import {IoMdHeartDislike } from 'react-icons/io'
 import {FcLike} from 'react-icons/fc'
 import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai'
+import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 
 
 export default function Results(results) {
+    const url = process.env.URL_MOVIES
     const [data, setData] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [noRecommendation, setNoRecommendation] = useState(true);
@@ -22,7 +24,7 @@ export default function Results(results) {
                         desLike: [...new Set(userDisLike)],
                     }
                 ))
-            const recommendation = await fetch('https://movies-400919.ey.r.appspot.com/movies/recommendation', {
+            const recommendation = await fetch(`${url}recommendation`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -87,7 +89,7 @@ export default function Results(results) {
                 }
                 {
                     (data !== false)
-                        ? <div className="grid-rows-1 justify-center">
+                        ? <div className="grid-rows-1 justify-center mb-2">
                             <div className="grid font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1 text-center"> Recommendation</div>
                         </div>
                         : null
@@ -126,11 +128,11 @@ export default function Results(results) {
                             ? null
                             : (
                                 data?.map((movie, index) =>
-                                    <Card style={{margin: "0 auto"}} key={index} result={movie}/>)
+                                    <Card key={index} result={movie}/>)
                             )}
                     {
                         (noRecommendation === false )
-                        ? <p className ='text-center'>No recommendation, please refresh the page.</p>
+                        ? <div className ='mb-10 text-center'>No recommendation, please refresh the page.</div>
                         : null
 
                     }
