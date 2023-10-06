@@ -16,7 +16,7 @@ export default function Results(results) {
 
     async function clickHandler() {
         setIsLoading(true);
-        console.log('Clicked')
+        console.log('Clicked!')
         try {
             console.log(
                 JSON.stringify({
