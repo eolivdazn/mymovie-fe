@@ -10,9 +10,10 @@ import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/post
 
 export default function Results(results) {
     const url = process.env.URL_MOVIES
-    const [data, setData] = useState(false);
+    const [requestRecommendation, setRequestRecommendation] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [noRecommendation, setNoRecommendation] = useState(true);
+
 
     async function clickHandler() {
         setIsLoading(true);
@@ -37,7 +38,7 @@ export default function Results(results) {
                 )
             })
             const result = await recommendation.json()
-            setData(result);
+            setRequestRecommendation(result);
             setNoRecommendation(result);
 
             return result
@@ -88,7 +89,7 @@ export default function Results(results) {
                         : null
                 }
                 {
-                    (data !== false)
+                    (requestRecommendation !== false && requestRecommendation.length > 0)
                         ? <div className="grid-rows-1 justify-center mb-2">
                             <div className="grid font-bold bg-amber-500 py-1 px-2 rounded-lg mr-1 text-center"> Recommendation</div>
                         </div>
@@ -106,28 +107,27 @@ export default function Results(results) {
                     </TinderCard>
                 )}
             </div>
-            {/*<span className='accent-green-900 float-right'>{[...new Set(userLike)].length}</span>*/}
-            {/*<span className="accent-red-600 float-left"> {[...new Set(userDisLike)].length}</span>*/}
-            {/*<span className=' float-right'>Like</span>*/}
-
             <div className='cardContainer' style={{margin: "0 auto"}}>
                 {[...new Set(userDisLike)].length +
-                [...new Set(userLike)].length === results.results.length && data === false ?
+                [...new Set(userLike)].length === results.results.length &&
+                requestRecommendation === false &&
+                noRecommendation === true
+                    ?
                     <div><p className='text-center'>Get a movie recommendation</p>
                         <div onClick={clickHandler}
                                 className=" mr-4 ml-4 mb-3 bg-amber-600 hover:bg-black text-center text-white font-bold py-2 px-4 rounded">
                             Recommendation
                         </div>
                     </div>
-                    : null}
+                    :  null}
                 {isLoading ? <p>Loading...If takes to long refresh the page and repeat</p> : null}
 
                 <div style={{margin: "0 auto"}} className=" z-index: 10 cardContainer">
                     {
-                        (data === false)
+                        (requestRecommendation === false)
                             ? null
                             : (
-                                data?.map((movie, index) =>
+                                requestRecommendation?.map((movie, index) =>
                                     <Card key={index} result={movie}/>)
                             )}
                     {
