@@ -59,7 +59,7 @@ export default function Results(results) {
             setUserDisLike(userDisLike => [...userDisLike, movie])
     }
 
-    const outOfFrame = (name) => {
+    const outOfFrame = () => {
     }
 
     return (
@@ -73,7 +73,6 @@ export default function Results(results) {
                         [...new Set(userLike)].length !== results.results.length )
 
                         ?
-
                             <div className="  grid grid-cols-7 justify-stretch  bg-amber-500 py-2 px-2 rounded-lg ml-1 mr-1">
                                 <IoMdHeartDislike className="top-1"></IoMdHeartDislike>
                                 <div className="justify-items-start px-1">{[...new Set(userDisLike)].length}</div>
@@ -96,7 +95,7 @@ export default function Results(results) {
                         : null
                 }
 
-                {results.results.map((movie, index) =>
+                {results.results.map((movie) =>
                     <TinderCard
                         className='swipe mr-1 ml-3'
                         key={movie._id} onSwipe={(dir) => swiped(dir, movie.id_themoviedb)}
@@ -112,8 +111,7 @@ export default function Results(results) {
                 [...new Set(userLike)].length === results.results.length &&
                 requestRecommendation === false &&
                 noRecommendation === true
-                    ?
-                    <div><p className='text-center'>Get a movie recommendation</p>
+                    ? <div><p className='text-center'>Get a movie recommendation</p>
                         <div onClick={clickHandler}
                                 className=" mr-4 ml-4 mb-3 bg-amber-600 hover:bg-black text-center text-white font-bold py-2 px-4 rounded">
                             Recommendation
