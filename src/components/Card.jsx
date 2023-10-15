@@ -55,13 +55,13 @@ export default function Card({result}) {
                 </div>
             {/*</Link>*/}
             <div className="p-2 inline"> <span className="font-bold">Cast:</span>
-                        { result.cast?.map((el,index) => ( <Actors key={index} actor={el}>
+                        { result.cast?.map((el) => ( <Actors key={el.name} actor={el}>
                             </Actors>)
                         ).slice(0, 3)}
                 </div>
               <div className="p-2"> <span className="font-bold">Director:</span>
-                { result.crew?.filter((el, index) =>  el.job === 'Director')
-                    .map((el) => ( <Actors key={el} actor={el}> </Actors>)
+                { result.crew?.filter((el) =>  el.job === 'Director')
+                    .map((el) => ( <Actors key={el.name} actor={el}> </Actors>)
                 ).slice(0, 2)}
             </div>
         </div>

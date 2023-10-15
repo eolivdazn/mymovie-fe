@@ -6,6 +6,7 @@ import {IoMdHeartDislike } from 'react-icons/io'
 import {FcLike} from 'react-icons/fc'
 import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai'
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
+import WatchProvider from "@/components/WatchProvider";
 
 
 export default function Results(results) {
@@ -124,10 +125,11 @@ export default function Results(results) {
                     {
                         (requestRecommendation === false)
                             ? null
-                            : (
-                                requestRecommendation?.map((movie, index) =>
-                                    <Card key={index} result={movie}/>)
-                            )}
+                            :
+                            <div>   <WatchProvider movie_id={requestRecommendation[0].id_themoviedb}/>
+                                    <Card key={requestRecommendation[0].id} result={requestRecommendation[0]}/>
+                            </div>
+                            }
                     {
                         (noRecommendation === false )
                         ? <div className ='mb-10 text-center'>No recommendation, please refresh the page.</div>

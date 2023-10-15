@@ -5,6 +5,7 @@ const nextConfig = {
     },
     env: {
         URL_MOVIES: process.env.URL_MOVIES,
+        API_KEY: process.env.API_KEY,
     }
 }
 
