@@ -35,6 +35,7 @@ export default function Results(results) {
                     {
                         like: [...new Set(userLike)],
                         desLike: [...new Set(userDisLike)],
+                        email: localStorage.getItem('email') || ''
                     }
                 )
             })

@@ -44,17 +44,4 @@ export default  function WatchProvider({movie_id}) {
             </div>
 
     )
-}//`https://image.tmdb.org/t/p/original/${
-// result.backdrop_path
-//display_priority
-// :
-// 4
-// logo_path
-// :
-// "/peURlLlr8jggOwK53fJ5wdQl05y.jpg"
-// provider_id
-// :
-// 2
-// provider_name
-// :
-// "Apple TV"
+}
