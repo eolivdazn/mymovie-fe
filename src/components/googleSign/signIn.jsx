@@ -24,6 +24,7 @@ function SignIn(){
     }
     const logoutClick =()=>{
             localStorage.removeItem("email")
+            localStorage.removeItem("userUID")
         setValue('')
     }
 

@@ -20,7 +20,9 @@ export default function Card({result}) {
               style={{
                   backgroundColor: isActive ? 'lightsalmon' : '',
               }}
-            className="cursor-pointer sm:p-3 sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:m-2 transition-shadow duration-200 group" >
+            className="max-w-screen-sm justify-between cursor-pointer sm:p-3 sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:m-2 transition-shadow duration-200 group"
+        style={{ margin: "auto"}}
+        >
             {/*<Link href={`/movie/${result.id_themoviedb}`}>*/}
                 <Image
                     src={ result.poster_path != null ?

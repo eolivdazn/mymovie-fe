@@ -1,5 +1,7 @@
 'use client'
 import {useSearchParams} from "next/navigation";
+import Card from "@/components/Card";
+import Link from "next/link";
 
 async function GetRecommendation() {
     const url = process.env.URL_MOVIES
@@ -29,14 +31,22 @@ async function GetRecommendation() {
 
 export default async function Page() {
      const rec = await GetRecommendation()
-    console.log(rec.map(el =>JSON.stringify(el.recommendationDate)))
-    console.log(rec.map(el =>JSON.stringify(el.movie.original_title)))
+    // console.log(rec.map(el =>JSON.stringify(el.recommendationDate)))
+    // console.log(rec.map(el =>JSON.stringify(el.movie.original_title)))
 
     return (
         <>
+            <div className={"justify-center text-center text-black font-bold border-black border-b"}>Recommendations List</div>
             {rec.map((el=>
-                        <div key={el.recommendationDate}>{el.recommendationDate}
-                         {el.movie.original_title}</div>
+                <>
+
+                <Link href={`/movie/${el.movie.id_themoviedb}`}>
+                        <div className="mr-4 ml-4 mb-3  text-center text-amber-600 font-bold py-2 px-2 rounded">
+                            <span className={"text-black"}>Recommend on: </span>{el.recommendationDate.split('T')[0]}
+                        </div>
+                    <Card result={el.movie}></Card>
+                </Link>
+                </>
             ))}
         </>
 
