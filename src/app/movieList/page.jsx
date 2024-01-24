@@ -32,7 +32,7 @@ export default async function Page() {
     return (
         <>
             {rec.map((el=>
-                        <div>{el.recommendationDate}
+                        <div key={el.recommendationDate}>{el.recommendationDate}
                          {el.movie.original_title}</div>
             ))}
         </>
