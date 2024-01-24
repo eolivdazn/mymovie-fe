@@ -2,15 +2,11 @@
 import React, { useEffect, useState } from "react";
 import {auth,provider} from "./config";
 import {signInWithPopup} from "firebase/auth";
-import {BsFillInfoCircleFill} from "react-icons/bs";
 import { SlLogin } from "react-icons/sl";
 import { VscAccount } from "react-icons/vsc";
 import { GrLogout } from "react-icons/gr";
-
-
-
 import MenuItem from "@/components/MenuItem";
-// import Home from "./Home";
+import Link from "next/link";
 
 function SignIn(){
     const [value,setValue] = useState('')
@@ -39,9 +35,12 @@ function SignIn(){
             {value ?
                 <>
                     <MenuItem title="Your list" address={listUrl} Icon={VscAccount}/>
-                    <button onClick={logoutClick}>
-                            <GrLogout className="text-2xl  mx-1"/>
-                    </button>
+                    <div>
+                    <Link href={'/'} onClick={logoutClick} className="mx-2 lg:mx-2 hover:text-amber-600">
+                        <GrLogout className="text-2xl sm:hidden" />
+                        <p className="hidden sm:inline my-2 text-sm">Out</p>
+                    </Link>
+                    </div>
                 </>
                 :
                 <>
