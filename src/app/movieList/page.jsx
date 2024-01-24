@@ -1,8 +1,7 @@
 'use client'
-
 import {useSearchParams} from "next/navigation";
 
-async function getRecommendation() {
+async function GetRecommendation() {
     const url = process.env.URL_MOVIES
     const email = useSearchParams().getAll('email')[0]
 
@@ -29,7 +28,7 @@ async function getRecommendation() {
 }
 
 export default async function Page() {
-     const rec = await getRecommendation()
+     const rec = await GetRecommendation()
     console.log(rec.map(el =>JSON.stringify(el.recommendationDate)))
     console.log(rec.map(el =>JSON.stringify(el.movie.original_title)))
 
