@@ -1,6 +1,10 @@
-async function getRecommendation() {
+'use client'
 
+import {useSearchParams} from "next/navigation";
+
+async function getRecommendation() {
     const url = process.env.URL_MOVIES
+    const email = useSearchParams().getAll('email')[0]
 
     const options = {
         method: 'PUT',
@@ -9,7 +13,7 @@ async function getRecommendation() {
         },
         body: JSON.stringify(
             {
-                email: 'eterra1@gmail.com'
+                email: email
             }
         )
     };

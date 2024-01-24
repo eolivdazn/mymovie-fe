@@ -18,10 +18,11 @@ function SignIn(){
     useEffect(()=>{
         setValue(localStorage.getItem('email'))
     })
-
+    const listUrl = `/movieList?email=${value}`
     return (
+
         <div>
-            {value? <MenuItem title="Your list" address="/movieList" Icon={BsFillInfoCircleFill} />:
+            {value? <MenuItem title="Your list" address={listUrl} Icon={BsFillInfoCircleFill} />:
                 <button onClick={handleClick}>Signin With Google</button>
             }
         </div>
