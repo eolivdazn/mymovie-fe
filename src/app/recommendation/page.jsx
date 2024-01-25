@@ -9,9 +9,10 @@ export default function Page() {
     const [data, setData] = useState(false)
     const [isLoading, setLoading] = useState(true)
 
-    const desLike = useSearchParams().getAll('desLike')[0]
-    const like = useSearchParams().getAll('like')[0]
-    const email = useSearchParams().getAll('email')[0]
+    const params =  useSearchParams()
+    const desLike = params.get('desLike')
+    const like = params.get('like')
+    const email = params.get('email')
 
     const desLikeNumbersArray = desLike.split(',').map(string => parseInt(string));
     const likeNumbersArray = like.split(',').map(string => parseInt(string));
