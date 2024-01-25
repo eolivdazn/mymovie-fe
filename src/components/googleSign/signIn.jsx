@@ -13,7 +13,6 @@ function SignIn(){
     const handleClick =()=>{
         signInWithPopup(auth,provider).then((data)=>{
             setValue(data.user.email)
-            console.log(JSON.stringify(data.user.uid))
             localStorage.setItem("email",data.user.email)
             localStorage.setItem("userUID",data.user.uid)//tjv6Ad6ORPfkCkdIHxO7aVW1OVu2
         })

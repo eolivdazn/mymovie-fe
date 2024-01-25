@@ -5,7 +5,8 @@ import Link from "next/link";
 
 async function GetRecommendation() {
     const url = process.env.URL_MOVIES
-    const email = useSearchParams().getAll('email')[0]
+    const searchParams = useSearchParams()
+    const email = searchParams.get('email')
 
     const options = {
         method: 'PUT',

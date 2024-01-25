@@ -10,11 +10,6 @@ import Link from "next/link";
 
 export default function Results(results) {
 
-    const [requestRecommendation, setRequestRecommendation] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    const [noRecommendation, setNoRecommendation] = useState(true);
-
-
     const [userLike, setUserLike] = useState([])
     const [userDisLike, setUserDisLike] = useState([])
 
@@ -27,8 +22,8 @@ export default function Results(results) {
 
     const outOfFrame = () => {
     }
+    const email = (typeof window == 'undefined') ?   "" : localStorage.getItem('email')
 
-    const email = localStorage.getItem('email') || ''
 
     return (
         <div>

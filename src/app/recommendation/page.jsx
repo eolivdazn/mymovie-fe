@@ -13,7 +13,6 @@ export default function Page() {
     const desLike = params.get('desLike')
     const like = params.get('like')
     const email = params.get('email')
-
     const desLikeNumbersArray = desLike.split(',').map(string => parseInt(string));
     const likeNumbersArray = like.split(',').map(string => parseInt(string));
 
