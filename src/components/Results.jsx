@@ -5,51 +5,15 @@ import TinderCard from 'react-tinder-card'
 import {IoMdHeartDislike } from 'react-icons/io'
 import {FcLike} from 'react-icons/fc'
 import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai'
-import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
-import WatchProvider from "@/components/WatchProvider";
+import Link from "next/link";
 
 
 export default function Results(results) {
-    const url = process.env.URL_MOVIES
+
     const [requestRecommendation, setRequestRecommendation] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [noRecommendation, setNoRecommendation] = useState(true);
 
-
-    async function clickHandler() {
-        setIsLoading(true);
-        console.log('Clicked!')
-        try {
-            console.log(
-                JSON.stringify({
-                        like: [...new Set(userLike)],
-                        desLike: [...new Set(userDisLike)],
-                    }
-                ))
-            const recommendation = await fetch(`${url}recommendation`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(
-                    {
-                        like: [...new Set(userLike)],
-                        desLike: [...new Set(userDisLike)],
-                        email: localStorage.getItem('email') || ''
-                    }
-                )
-            })
-            const result = await recommendation.json()
-            setRequestRecommendation(result);
-            setNoRecommendation(result);
-
-            return result
-        } catch (e) {
-
-        } finally {
-            setIsLoading(false);
-        }
-    }
 
     const [userLike, setUserLike] = useState([])
     const [userDisLike, setUserDisLike] = useState([])
@@ -63,6 +27,8 @@ export default function Results(results) {
 
     const outOfFrame = () => {
     }
+
+    const email = localStorage.getItem('email') || ''
 
     return (
         <div>
@@ -114,33 +80,17 @@ export default function Results(results) {
                 requestRecommendation === false &&
                 noRecommendation === true
                     ? <div><p className='text-center'>Get a movie recommendation</p>
-                        <div onClick={clickHandler}
+                        <Link
+                            replace
+                            prefetch={false}
+                            href={`/recommendation?like=${[...new Set(userLike)]}&desLike=${[...new Set(userDisLike)]}&email=${email}`}
                                 className=" mr-4 ml-4 mb-3 bg-amber-600 hover:bg-black text-center text-white font-bold py-2 px-4 rounded">
                             Recommendation
-                        </div>
+                        </Link>
                     </div>
                     :  null}
                 {isLoading ? <p>Loading...If takes to long refresh the page and repeat</p> : null}
-
-                <div style={{margin: "0 auto"}} className=" z-index: 10 cardContainer">
-                    {
-                        (requestRecommendation === false)
-                            ? null
-                            :
-                            <div>   <WatchProvider movie_id={requestRecommendation[0].id_themoviedb}/>
-                                    <Card key={requestRecommendation[0].id} result={requestRecommendation[0]}/>
-                            </div>
-                            }
-                    {
-                        (noRecommendation === false )
-                        ? <div className ='mb-10 text-center'>No recommendation, please refresh the page.</div>
-                        : null
-
-                    }
-                </div>
-
             </div>
-
         </div>
 
 

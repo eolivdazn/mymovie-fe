@@ -46,8 +46,8 @@ function SignIn(){
                 <>
                     <button onClick={handleClick}>
                         <p className=" flex sm:inline my-2 text-sm">
-                            <SlLogin className="text-2xl sm:hidden mx-1"/>
-                            <span style={{"padding-top": "2px" }}>In</span></p>
+                            <SlLogin className="text-2xl sm:hidden mx-1 "/>
+                            <span className={"p-top"}>In</span></p>
                     </button>
                 </>
             }

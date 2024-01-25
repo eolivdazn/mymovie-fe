@@ -65,6 +65,9 @@
 .top-1 {
     height: 23px;
 }
+.p-top {
+    padding-top: 2px
+}
 
 .card {
     padding-top: 10px;

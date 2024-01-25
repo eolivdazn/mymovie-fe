@@ -31,9 +31,6 @@ async function GetRecommendation() {
 
 export default async function Page() {
      const rec = await GetRecommendation()
-    // console.log(rec.map(el =>JSON.stringify(el.recommendationDate)))
-    // console.log(rec.map(el =>JSON.stringify(el.movie.original_title)))
-
     return (
         <>
             <div className={"justify-center text-center text-black font-bold border-black border-b"}>Recommendations List</div>
