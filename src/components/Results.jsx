@@ -10,6 +10,9 @@ import Link from "next/link";
 
 export default function Results(results) {
 
+    const [requestRecommendation] = useState(false);
+    const [isLoading] = useState(false);
+    const [noRecommendation] = useState(true);
     const [userLike, setUserLike] = useState([])
     const [userDisLike, setUserDisLike] = useState([])
 
