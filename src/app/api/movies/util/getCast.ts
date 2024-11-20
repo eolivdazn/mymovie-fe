@@ -1,4 +1,4 @@
-export const getCast = async (id: number) => {
+export const getCasts = async (id: number) => {
     const url = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.API_KEY!}&language=en-US`;
     const options = {
         method: 'GET',

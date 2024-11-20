@@ -10,7 +10,7 @@ export default async function Home() {
 };
     const url = process.env.URL_MOVIES
 
-    const res = await fetch(`${url}getInitialMovies/`,{...options, next: { revalidate: 30 } })
+    const res = await fetch(`${url}api/movies/getInit`,{...options, next: { revalidate: 30 } })
         .then(response => response.json())
         .catch(err => console.error(err));
 
