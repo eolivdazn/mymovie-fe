@@ -5,7 +5,7 @@ import {signInWithPopup} from "firebase/auth";
 import { SlLogin } from "react-icons/sl";
 import { VscAccount } from "react-icons/vsc";
 import { GrLogout } from "react-icons/gr";
-import MenuItem from "@/components/MenuItem";
+import MenuItem from "../MenuItem";
 import Link from "next/link";
 
 function SignIn(){

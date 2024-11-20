@@ -1,5 +1,5 @@
 "use client"
-import Card from "@/components/Card";
+import Card from "./Card";
 import {useState} from "react";
 import TinderCard from 'react-tinder-card'
 import {IoMdHeartDislike } from 'react-icons/io'

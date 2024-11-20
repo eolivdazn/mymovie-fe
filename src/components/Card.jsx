@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from 'next/image'
 import {AiFillStar} from 'react-icons/ai'
 import {BsCalendar2DateFill} from 'react-icons/bs'
-import Actors from "@/components/Actors";
+import Actors from "./Actors";
 import {useState} from "react";
 
 

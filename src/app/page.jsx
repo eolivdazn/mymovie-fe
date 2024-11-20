@@ -1,4 +1,4 @@
-import Results from "@/components/Results";
+import Results from "./../components/Results";
 import process from "next/dist/build/webpack/loaders/resolve-url-loader/lib/postcss";
 export default async function Home() {
 

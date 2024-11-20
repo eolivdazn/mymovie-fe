@@ -1,8 +1,8 @@
 import { AiFillHome } from "react-icons/ai";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import Link from "next/link";
-import MenuItem from "@/components/MenuItem";
-import SignIn from "@/components/googleSign/signIn";
+import MenuItem from "./MenuItem";
+import SignIn from "./googleSign/signIn";
 
 export default function Header() {
   return (
