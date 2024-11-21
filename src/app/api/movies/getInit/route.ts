@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import MovieModel  from "../../interface/movie"
+export const dynamic = "force-dynamic";
 
 
 export async function GET(request: NextRequest) {
@@ -11,9 +12,6 @@ export async function GET(request: NextRequest) {
       ]);
     return NextResponse.json(movie,{ status: 200 });
 
-
-//   return NextResponse.json({ test: "test" }, );
 }
 
-
-//http://localhost:3000/api/movies/sync
+//http://localhost:3000/api/movies/getInit

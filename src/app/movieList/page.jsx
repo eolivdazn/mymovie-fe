@@ -1,6 +1,6 @@
 'use client'
 import {useSearchParams} from "next/navigation";
-import Card from "@/components/Card";
+import Card from "../../components/Card";
 import Link from "next/link";
 
 async function GetRecommendation() {
