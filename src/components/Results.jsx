@@ -87,7 +87,7 @@ export default function Results(results) {
                         </Link>
                     </div>
                     :  null}
-                {isLoading ? <p>Loading...If takes to long refresh the page and repeat</p> : null}
+                {isLoading ? <p>Loading...If takes to long refresh the page and repeat!</p> : null}
             </div>
         </div>
 
